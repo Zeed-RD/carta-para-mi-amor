@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para ti, mi amor ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #16050d, #3b0b20, #12030a);
+            color: white;
+            font-family: Georgia, serif;
+        }
+
+        .inicio {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .flores {
+            font-size: 55px;
+            margin-bottom: 25px;
+            animation: flotar 3s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 18px;
+            text-shadow: 0 0 20px #ff4f81;
+        }
+
+        p {
+            font-size: 20px;
+            opacity: .85;
+            margin-bottom: 35px;
+        }
+
+        button {
+            border: none;
+            padding: 16px 32px;
+            border-radius: 40px;
+            background: linear-gradient(135deg, #ff4f81, #ff174f);
+            color: white;
+            font-size: 18px;
+            font-family: Georgia, serif;
+            box-shadow: 0 0 25px rgba(255, 79, 129, .5);
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: scale(.95);
+        }
+
+        .corazon {
+            position: fixed;
+            bottom: -30px;
+            font-size: 20px;
+            animation: subir 6s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes subir {
+
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) scale(1.8);
+                opacity: 0;
+            }
+
+        }
+
+        @keyframes flotar {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+        }
+
+        .carta {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .sobre {
+            font-size: 90px;
+            margin-bottom: 25px;
+            animation: latido 1.5s infinite;
+        }
+
+        @keyframes latido {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <section class="inicio">
+
+            <div class="flores">
+                🌹 🌷 🌹
+            </div>
+
+            <h1>Para ti, mi amor ❤️</h1>
+
+            <p>
+                Preparé algo especialmente para ti...
+            </p>
+
+            <button onclick="abrirRegalo()">
+                💗 Abrir mi regalo
+            </button>
+
+        </section>
+
+    </div>
+
+    <audio id="musica" loop>
+        <source src="music/cancion.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <script>
+
+        function crearCorazon() {
+
+            const corazon = document.createElement("div");
+
+            corazon.className = "corazon";
+            corazon.innerHTML = "❤️";
+
+            corazon.style.left =
+                Math.random() * 100 + "vw";
+
+            corazon.style.animationDuration =
+                (4 + Math.random() * 4) + "s";
+
+            document.body.appendChild(corazon);
+
+            setTimeout(() => {
+                corazon.remove();
+            }, 8000);
+        }
+
+
+        function lluviaDeCorazones() {
+
+            setInterval(() => {
+                crearCorazon();
+            }, 500);
+
+        }
+
+
+        function abrirRegalo() {
+
+            const musica =
+                document.getElementById("musica");
+
+            musica.play();
+
+            document.querySelector(".inicio").style.display = "none";
+
+            const app =
+                document.getElementById("app");
+
+            app.innerHTML = `
+
+                <section class="carta">
+
+                    <div class="sobre">
+                        💌
+                    </div>
+
+                    <h1>
+                        Tengo algo que decirte...
+                    </h1>
+
+                    <p>
+                        Desde que llegaste a mi vida,
+                        hay momentos que simplemente
+                        se sienten diferentes. ❤️
+                    </p>
+
+                    <button onclick="continuar()">
+                        Abrir mi carta 💌
+                    </button>
+
+                </section>
+
+            `;
+
+            lluviaDeCorazones();
+
+        }
+
+
+        function continuar() {
+
+            const app =
+                document.getElementById("app");
+
+            app.innerHTML = `
+
+                <section class="carta">
+
+                    <div class="sobre">
+                        🌹
+                    </div>
+
+                    <h1>
+                        Para la persona que amo ❤️
+                    </h1>
+
+                    <p>
+                        Esta página apenas comienza...
+                        <br><br>
+                        Quiero llenarla de recuerdos,
+                        palabras, flores y sorpresas
+                        hechas especialmente para ti.
+                    </p>
+
+                </section>
+
+            `;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
